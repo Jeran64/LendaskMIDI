@@ -3,6 +3,7 @@ Lendask MIDI is a tutorial that reflect my own journey for a simple and elegant 
 
 Lendask is intended to be flexible, cheap, and easy to make.
 
+###################
 Lendask uses:
 
 teensy 3.2
@@ -15,6 +16,8 @@ up to 21 knobs/faders
 
 up to 16 buttons
 
+
+###################
 
 Additional Materials:
 
@@ -33,5 +36,5 @@ Drill with Bits
 microUSB cable
 
 To give you an estimate on price, if you also have to buy the tools, you are looking at around 70$
-
+#############################
 First thing is first, make sure that you can upload code to your teensy. a common problem is that the micro USB cable you are using is actually a charging only cable, not a data cable. I too encountered this common problem.
