@@ -4,19 +4,32 @@ Lendask MIDI is a tutorial that reflect my own journey for a simple and elegant 
 Lendask is intended to be flexible, cheap, and easy to make.
 
 Lendask uses:
+
 teensy 3.2
+
 Arduino IDE 1.8.9
+
 teensyduino/Teensy Loader 1.46
+
 up to 21 knobs/faders 
+
 up to 16 buttons
 
+
 Additional Materials:
+
 Wires (solid core is great)
+
 PCB Female Pin Headers
+
 Solder and Soldering Iron
+
 Wire Stripper
+
 Sturdy Case
+
 Drill with Bits
+
 microUSB cable
 
 To give you an estimate on price, if you also have to buy the tools, you are looking at around 70$
