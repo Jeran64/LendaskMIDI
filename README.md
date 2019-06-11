@@ -41,3 +41,10 @@ To give you an estimate on price, if you also have to buy the tools, you are loo
 #############################
 
 First thing is first, make sure that you can upload code to your teensy. a common problem is that the micro USB cable you are using is actually a charging only cable, not a data cable. I too encountered this common problem.
+
+
+You will need to solder pin headers to the teensy in order to use the most of its many analog inputs.
+
+
+![My image](Jeran64.github.com/LendaskMIDI/IMG_20190604_115436.jpg)
+
