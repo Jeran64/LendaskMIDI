@@ -49,4 +49,17 @@ The standard pins first.
 ![My image](https://github.com/Jeran64/LendaskMIDI/blob/master/Photos/IMG_20190604_115436.jpg)
 
 Then to access a important number fo the analog pins, I chose to solder the headers at an angle.
-![My image](https://github.com/Jeran64/LendaskMIDI/blob/master/Photos/IMG_20190604_115647.jpg?raw=true)
+![My image](https://github.com/Jeran64/LendaskMIDI/blob/master/Photos/IMG_20190604_115647.jpg)
+
+And for the other side.
+![My image](https://github.com/Jeran64/LendaskMIDI/blob/master/Photos/IMG_20190604_120131.jpg)
+
+Do the pins at the bottom.
+![My image](https://github.com/Jeran64/LendaskMIDI/blob/master/Photos/IMG_20190604_121621.jpg)
+
+as you add these headers, if you are not using pre sized headers, it may be nessicary to trim the sides before you solder to ensure a correct fit. you can see where I didnt trim them in the back, and some warping from not trimming enough.
+
+And might as well do the last interior pins.
+![My image](https://github.com/Jeran64/LendaskMIDI/blob/master/Photos/IMG_20190604_121627.jpg)
+
+Once you have the headers soldered on, it will be signifigantly easier to attach wires to it. I chose to use pin headers rather than than soldering directly to the teensy so that i could potentially reconfigure the midi controller to my needs in the future.
