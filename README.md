@@ -43,8 +43,10 @@ To give you an estimate on price, if you also have to buy the tools, you are loo
 First thing is first, make sure that you can upload code to your teensy. a common problem is that the micro USB cable you are using is actually a charging only cable, not a data cable. I too encountered this common problem.
 
 
-You will need to solder pin headers to the teensy in order to use the most of its many analog inputs.
+You will need to solder pin headers to the teensy in order to use them correctly. I chose the following configurating of my headers, to ensure that I had easy access to all the relevant pins.
 
-![My image](Jeran64.github.com/LendaskMIDI/IMG_20190604_115436.jpg)
-![My image](
-https://github.com/Jeran64/LendaskMIDI/blob/master/Photos/IMG_20190604_115436.jpg)
+The standard pins first.
+![My image](https://github.com/Jeran64/LendaskMIDI/blob/master/Photos/IMG_20190604_115436.jpg)
+
+Then to access a important number fo the analog pins, I chose to solder the headers at an angle.
+![My image](https://github.com/Jeran64/LendaskMIDI/blob/master/Photos/IMG_20190604_115647.jpg?raw=true)
