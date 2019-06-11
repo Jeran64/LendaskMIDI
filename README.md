@@ -3,6 +3,9 @@ Lendask MIDI is a tutorial that reflect my own journey for a simple and elegant 
 
 Lendask is intended to be flexible, cheap, and easy to make.
 
+[Watch this controller in action!](https://www.youtube.com/watch?v=0sJB6PYqbX8)
+
+
 ###################
 
 Lendask uses:
