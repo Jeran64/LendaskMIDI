@@ -54,7 +54,7 @@ Since we must access a important number of the analog pins that are not thru-hol
 And for the other side.
 ![My image](https://github.com/Jeran64/LendaskMIDI/blob/master/Photos/IMG_20190604_120131.jpg)
 
-Do the pins at the bottom.
+Do the pins at the end. (you can see them under the teensy at the bottom)
 ![My image](https://github.com/Jeran64/LendaskMIDI/blob/master/Photos/IMG_20190604_121621.jpg)
 
 As you add these headers, if you are not using pre sized headers, it may be nessicary to trim the sides before you solder to ensure a correct fit. you can see where I didnt trim them in the back, and some warping from not trimming enough.
@@ -64,7 +64,7 @@ And might as well do the last interior pins.
 
 Once you have the headers soldered on, it will be signifigantly easier to attach wires to it. I chose to use pin headers rather than than soldering directly to the teensy so that I could potentially reconfigure the midi controller to my needs in the future.
 
-Now for the potentiometer bank. We are using 16 10k potentiometers. This board is just the test fit board. After drilling the holes with a 1/4" drill bit (and slightly widening it to allow for the screw threads) the potentiometers can be mounted in place by screwing thier nut down. This helps keep them in place while we solder them down. It helps to make sure that they are all aligned in the same direction. Once aligned, connect all your ground wires.
+Now for the potentiometer bank. We are using sixteen 10k potentiometers. This board is just the test fit board. After drilling the holes with a 1/4" drill bit (and slightly widening it to allow for the screw threads) the potentiometers can be mounted in place by screwing thier nut down. This helps keep them in place while we solder them down. It helps to make sure that they are all aligned in the same direction. Once aligned, connect all your ground wires.
 
 ![My image](https://github.com/Jeran64/LendaskMIDI/blob/master/Photos/IMG_20190604_181120.jpg)
 PLEASE NOTE: I soldered mine on backwards. But that's okay, I fixed that fact in code.
