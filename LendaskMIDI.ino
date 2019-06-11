@@ -1,4 +1,4 @@
-//Bunch of Knobs by Jeran Halfpap
+//LendaskMIDI by Jeran Halfpap 6/10/19
 //A simplified project for building a MIDI controller as simple as possible.
 //using a teensy 3.2, Arduino 1.8.9, and teensyduino/Teensy Loader 1.46
 //TODO include a note about the sketch settings in here.
@@ -25,6 +25,7 @@ const int teensyDPins[]={0,1,2,3,4,5,6,7,8,9,10,11,12,24,25,32,33};//these are t
 int previousAnalogValues[knobCount];// a list of what the values are.
 int previousDigitalValues[buttonCount];
 int dataGet;
+bool change;
 
   
   
@@ -52,8 +53,8 @@ void loop()
     if(abs(previousAnalogValues[a]-dataGet)>sensitivity)//check to see if that value has changed by at least our sensitivity.
     {
       previousAnalogValues[a]=dataGet;//if it has, we need to save the new value.
-      usbMIDI.sendControlChange(CCOutChannel[a],dataGet, MIDI_Channel); //and then send it out if its different.
-      digitalWrite(13,HIGH);//turn on our debug light.
+      usbMIDI.sendControlChange(CCOutChannel[a],(127-dataGet), MIDI_Channel); //and then send it out if its different. we subtract becuase the knobs values are backwards.
+      change=true;
     }
   }
  
@@ -65,6 +66,13 @@ void loop()
     {
       usbMIDI.sendNoteOn(CCOutChannel[a+knobCount], dataGet, MIDI_Channel); //send that info.
       previousDigitalValues[a]=dataGet;//save that for later.
+      change=true;
     }
+  }
+  if(change) //we handle the LED seperately at the end, becuase if we simplify it and put the LED on in the for loop, then it causes a hardware bug where knobs later on in the for loop are dimmer than earlier ones.
+  {
+    digitalWrite(13,HIGH);//turn on our debug light. 
+    change=false;
+    //delay(5);//adding this delay will cause the led to be brighter. i like the greater range of brightness without this.
   }
 }
