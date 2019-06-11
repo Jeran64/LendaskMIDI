@@ -1,4 +1,4 @@
-//LendaskMIDI by Jeran Halfpap 6/10/19
+//Bunch of Knobs by Jeran Halfpap 6/10/19
 //A simplified project for building a MIDI controller as simple as possible.
 //using a teensy 3.2, Arduino 1.8.9, and teensyduino/Teensy Loader 1.46
 //TODO include a note about the sketch settings in here.
@@ -11,9 +11,9 @@
 const int knobCount=16;
 const int buttonCount=0; //buttons and toggles.
 const int MIDI_Channel=1;
-const int averageSmoothing=8;//how many values to keep in, to smooth things out. the higher, the smoother/slower the response of the knob.
+const int averageSmoothing=20;//how many values to keep in, to smooth things out. the higher, the smoother/slower the response of the knob.
 const int bouncey=5;//how much the bounce time wait is. 5 is good.
-const int sensitivity=1;//how big of a change we need to write data.
+const int sensitivity=1;//how big of a change we need to write data. values of one can sometimes produce a lot of values that wiggle back and forth by 1. 
 
 //crystal constants. dont change these! these are points of data based on the MIDI standard and the teensy pin layout.
 
@@ -50,19 +50,19 @@ void loop()
   for(int a=0;a<knobCount;a++) //go through our list of knobby objects.
   {
     dataGet=analogRead(teensyAPins[a]);//save the pins current value.
-    if(abs(previousAnalogValues[a]-dataGet)>sensitivity)//check to see if that value has changed by at least our sensitivity.
+    if(abs(previousAnalogValues[a]-dataGet)>=sensitivity)//check to see if that value has changed by at least our sensitivity.
     {
       previousAnalogValues[a]=dataGet;//if it has, we need to save the new value.
-      usbMIDI.sendControlChange(CCOutChannel[a],(127-dataGet), MIDI_Channel); //and then send it out if its different. we subtract becuase the knobs values are backwards.
+      usbMIDI.sendControlChange(CCOutChannel[a],(127-dataGet), MIDI_Channel); //and then send it out if its different. we subtract becuase my knobs wire are backwards.
       change=true;
     }
   }
  
   //handle DIGITAL inputs.
-  for(int a=0;a<buttonCount;a++)
+  for(int a=0;a<buttonCount;a++) //go through our list of buttony objects.
   {
     dataGet=digitalRead(teensyDPins[a]);//get the value of the associated pin.
-    if(dataGet!=previousDigitalValues[a])//if the values dont match, theres an edge.
+    if(dataGet!=previousDigitalValues[a])//if the values dont match, there's an edge.
     {
       usbMIDI.sendNoteOn(CCOutChannel[a+knobCount], dataGet, MIDI_Channel); //send that info.
       previousDigitalValues[a]=dataGet;//save that for later.
