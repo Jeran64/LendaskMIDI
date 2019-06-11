@@ -45,7 +45,7 @@ First thing is first, make sure that you can upload code to your teensy. a commo
 About the code:
 
 Make sure that you set the parameters of the code 
-
+![My image](https://github.com/Jeran64/LendaskMIDI/blob/master/Photos/ArduinoIDE%20Settings.png)
 
 You will need to solder pin headers to the teensy in order to use them correctly. I chose the following configurating of my headers, to ensure that I had easy access to all the relevant pins. Since we are using female pinheaders, I reccomend using solid core wire, as it is signifigantly easier to plug into the headers, by simply stripping the ends of the wire.
 
@@ -90,5 +90,5 @@ I chose not to sand or stain my box, because I didnt feel like it. Painting, sea
 After reinstalling the potentiometer array, 2 more holes were drilled. One with the box closed on the seam, to allow space for the USB cord to exit the box. Then an LED was added to the middle at the top as an indicator. This LED is connected to ground and pin 13. I did not include a resistor because it's already only 3.3 volts.
 ![My image](https://github.com/Jeran64/LendaskMIDI/blob/master/Photos/IMG_20190610_202011.jpg)
 
-It's done. I like to use this device with FLStudio.
-
+It's done! I like to use this device with FLStudio.
+![My image](https://github.com/Jeran64/LendaskMIDI/blob/master/Photos/IMG_20190610_203637.jpg)
