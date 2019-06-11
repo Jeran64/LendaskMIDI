@@ -45,6 +45,6 @@ First thing is first, make sure that you can upload code to your teensy. a commo
 
 You will need to solder pin headers to the teensy in order to use the most of its many analog inputs.
 
-
 ![My image](Jeran64.github.com/LendaskMIDI/IMG_20190604_115436.jpg)
-
+![My image](
+https://github.com/Jeran64/LendaskMIDI/blob/master/Photos/IMG_20190604_115436.jpg)
