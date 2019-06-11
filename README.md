@@ -105,3 +105,8 @@ After reinstalling the potentiometer array, 2 more holes were drilled. One with 
 It's done! I like to use this device with FLStudio.
 
 ![My image](https://github.com/Jeran64/LendaskMIDI/blob/master/Photos/IMG_20190610_203637.jpg)
+
+To help you understand how to use it with FL Studio, once the midi device is connected and recognized by FL Studio, simply click this knob button, and it will glow orange. while it is orange, twiddle a digitial knob in FL Studio, and then after you have changed its value with its twiddling, turn the knob on your MIDI device and it will pair those knobs! I reccomend setting them all up, and then saving. FL Studio will recognize the device if its in the save, but not from a fresh file.
+
+![My image](https://github.com/Jeran64/LendaskMIDI/blob/master/Photos/FLSTUDIOSETUP.png)
+
