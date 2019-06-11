@@ -67,7 +67,7 @@ Once you have the headers soldered on, it will be signifigantly easier to attach
 Now for the potentiometer bank. We are using sixteen 10k potentiometers. This board is just the test fit board. After drilling the holes with a 1/4" drill bit (and slightly widening it to allow for the screw threads) the potentiometers can be mounted in place by screwing thier nut down. This helps keep them in place while we solder them down. It helps to make sure that they are all aligned in the same direction. Once aligned, connect all your ground wires.
 
 ![My image](https://github.com/Jeran64/LendaskMIDI/blob/master/Photos/IMG_20190604_181120.jpg)
-PLEASE NOTE: I soldered mine on backwards. But that's okay, I fixed that fact in code.
+PLEASE NOTE: I soldered mine on backwards. But that's okay, I fixed that after-the-fact in code.
 
-Now we connect all the 3.3v wires. You can connect them all together. Note that I forgot to solder the columns together before taking this picture.
+Now we connect all the red wires to carry the 3.3v. You can connect them all together. Note that I forgot to solder the red columns together before taking this picture.
 ![My image](https://github.com/Jeran64/LendaskMIDI/blob/master/Photos/IMG_20190604_184025.jpg)
