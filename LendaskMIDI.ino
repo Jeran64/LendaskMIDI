@@ -1,4 +1,4 @@
-//Bunch of Knobs by Jeran Halfpap 6/10/19
+//Lendask MIDI controller by Jeran Halfpap 6/10/19
 //A simplified project for building a MIDI controller as simple as possible.
 //using a teensy 3.2, Arduino 1.8.9, and teensyduino/Teensy Loader 1.46
 //TODO include a note about the sketch settings in here.
