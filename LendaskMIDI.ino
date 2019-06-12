@@ -11,9 +11,8 @@
 const int knobCount=16;
 const int buttonCount=0; //buttons and toggles.
 const int MIDI_Channel=1;
-const int averageSmoothing=20;//how many values to keep in, to smooth things out. the higher, the smoother/slower the response of the knob.
+const int averageSmoothing=32;//how much smoothing should be applied. (takes the average of the last x values. max is 32)
 const int bouncey=5;//how much the bounce time wait is. 5 is good.
-const int sensitivity=1;//how big of a change we need to write data. values of one can sometimes produce a lot of values that wiggle back and forth by 1. 
 
 //crystal constants. dont change these! these are points of data based on the MIDI standard and the teensy pin layout.
 
@@ -23,6 +22,8 @@ const int teensyDPins[]={0,1,2,3,4,5,6,7,8,9,10,11,12,24,25,32,33};//these are t
 
 //variables.
 int previousAnalogValues[knobCount];// a list of what the values are.
+int previousAnalogValuesOld[knobCount];//we need to also know the last value.
+int dynamicSensitivity[knobCount];//maintain a log of what the current sensitivity is for each knob.
 int previousDigitalValues[buttonCount];
 int dataGet;
 bool change;
@@ -32,7 +33,7 @@ bool change;
 void setup() 
 {
   analogReadResolution(7);//sets the scale of the pots down the to resolution we want of 0 to 127.
-  analogReadAveraging(averageSmoothing*2);//sets the number of values we check and then average on the analog pins. 
+  analogReadAveraging(averageSmoothing);//sets the number of values we check and then average on the analog pins. 
 
   ///lastly, lets configure the digital pins to but in the correct mode.
   for(int a=0;a<buttonCount;a++)
@@ -50,19 +51,28 @@ void loop()
   for(int a=0;a<knobCount;a++) //go through our list of knobby objects.
   {
     dataGet=analogRead(teensyAPins[a]);//save the pins current value.
-    if(abs(previousAnalogValues[a]-dataGet)>=sensitivity)//check to see if that value has changed by at least our sensitivity.
+    if(abs(previousAnalogValues[a]-dataGet)>=dynamicSensitivity[a])//check to see if that value has changed by at least our sensitivity.
     {
+      if(previousAnalogValuesOld[a]==dataGet)//this is a method of dynamically changing the sensitivity. its a common problem for potentiometers to jump back and forth between 2 values. if the old value saved is the same as the new value, that means that we are jumping back and forth.
+      {
+        dynamicSensitivity[a]=2; ///this method does have the downside of having less smooth transitions from a stopping position to a sweep, or loss of a midi input when changing knob direction, but thats worth it for cleaner output.
+      }
+      else
+      {
+        dynamicSensitivity[a]=1;
+      }
+      previousAnalogValuesOld[a]=previousAnalogValues[a];//push it into the history.
       previousAnalogValues[a]=dataGet;//if it has, we need to save the new value.
-      usbMIDI.sendControlChange(CCOutChannel[a],(127-dataGet), MIDI_Channel); //and then send it out if its different. we subtract becuase my knobs wire are backwards.
+      usbMIDI.sendControlChange(CCOutChannel[a],(127-dataGet), MIDI_Channel); //and then send it out if its different. we subtract becuase the knobs values are backwards.
       change=true;
     }
   }
  
   //handle DIGITAL inputs.
-  for(int a=0;a<buttonCount;a++) //go through our list of buttony objects.
+  for(int a=0;a<buttonCount;a++)
   {
     dataGet=digitalRead(teensyDPins[a]);//get the value of the associated pin.
-    if(dataGet!=previousDigitalValues[a])//if the values dont match, there's an edge.
+    if(dataGet!=previousDigitalValues[a])//if the values dont match, theres an edge.
     {
       usbMIDI.sendNoteOn(CCOutChannel[a+knobCount], dataGet, MIDI_Channel); //send that info.
       previousDigitalValues[a]=dataGet;//save that for later.
