@@ -22,8 +22,7 @@ const int teensyDPins[]={0,1,2,3,4,5,6,7,8,9,10,11,12,24,25,32,33};//these are t
 
 //variables.
 int previousAnalogValues[knobCount];// a list of what the values are.
-int previousAnalogValuesOld[knobCount];//we need to also know the last value.
-int dynamicSensitivity[knobCount];//maintain a log of what the current sensitivity is for each knob.
+int previousAnalogValuesOld[knobCount];//this is a list of values before last.
 int previousDigitalValues[buttonCount];
 int dataGet;
 bool change;
@@ -51,16 +50,8 @@ void loop()
   for(int a=0;a<knobCount;a++) //go through our list of knobby objects.
   {
     dataGet=analogRead(teensyAPins[a]);//save the pins current value.
-    if(abs(previousAnalogValues[a]-dataGet)>=dynamicSensitivity[a])//check to see if that value has changed by at least our sensitivity.
+    if((abs(previousAnalogValues[a]-dataGet)>=1) and (dataGet!=previousAnalogValuesOld[a]))//check to see if that value has changed by at least our sensitivity, and that its not trying to bounce back and forth between the previous value (this cuts out the most common digital noise)
     {
-      if(previousAnalogValuesOld[a]==dataGet)//this is a method of dynamically changing the sensitivity. its a common problem for potentiometers to jump back and forth between 2 values. if the old value saved is the same as the new value, that means that we are jumping back and forth.
-      {
-        dynamicSensitivity[a]=2; ///this method does have the downside of having less smooth transitions from a stopping position to a sweep, or loss of a midi input when changing knob direction, but thats worth it for cleaner output.
-      }
-      else
-      {
-        dynamicSensitivity[a]=1;
-      }
       previousAnalogValuesOld[a]=previousAnalogValues[a];//push it into the history.
       previousAnalogValues[a]=dataGet;//if it has, we need to save the new value.
       usbMIDI.sendControlChange(CCOutChannel[a],(127-dataGet), MIDI_Channel); //and then send it out if its different. we subtract becuase the knobs values are backwards.
